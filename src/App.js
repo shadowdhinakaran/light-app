@@ -1,23 +1,25 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
 
 function App() {
+  const [isOn,SetIsOn] = useState(false);
+  
+  const ToggleLight = () => SetIsOn(!isOn);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{textAlign:'center',paddingTop:'50px',backgroundColor:'yellowgreen',height:'100vh'}}>
+      <h2>{isOn ? "💡 Light is ON" : "🌑 Light is OFF"}</h2>
+      <img src={
+         isOn
+         ? 'https://www.w3schools.com/js/pic_bulbon.gif'
+         : 'https://www.w3schools.com/js/pic_bulboff.gif'
+      } 
+      alt="bulb"
+      style={{ width: '100px', margin: '20px 0' }}
+      />
+      <br />
+      <button onClick={ToggleLight}>
+        turn {isOn? "off":"on"}
+      </button>
     </div>
   );
 }
